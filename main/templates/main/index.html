@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block page_content %}
+    <p>Если ты рекрут, тебе <a href="{% url 'main:recruit_create' %}">
+        сюда
+    </a></p>
+    <p>************************************************************</p>
+    <p>Если ты Ситх, прошу следовать <a href="{% url 'main:sith_list' %}">
+        в этом направлении
+    </a></p>
+{% endblock %}

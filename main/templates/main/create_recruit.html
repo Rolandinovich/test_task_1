@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block page_title %}
+    Введи свои данные рекрут
+{% endblock %}
+
+{% block page_content %}
+    <h3>Введи свои данные рекрут</h3>
+    <form action="{% url 'main:recruit_create' %}" method="post">
+    {% csrf_token %}
+    {{ recruit_form.as_p }}
+    <input type="submit" value="Далее">
+
+    </form>
+{% endblock %}

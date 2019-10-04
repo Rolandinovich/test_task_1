@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block page_title %}
+    Ответь на вопросы
+{% endblock %}
+
+{% block page_content %}
+    <h3>Ответь на вопросы</h3>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ test_form.management_form }}
+        {% for form in test_form.forms %}
+            {% for field in form.visible_fields %}
+                {% if forloop.first %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                {% endif %}
+                {{ field.errors.as_ul }}
+                {% if field.name == 'question' %}
+                    {% if form.instance.question %}
+                        {{ form.instance.question }}
+                    {% else %}
+                        {{ form.data.question }}
+                    {% endif %}
+                    {{ field }}
+                {% endif %}
+                {% if field.name == 'answer' %}
+                    {{ field }}
+                {% endif %}
+                <br>
+            {% endfor %}
+        {% endfor %}
+        <button type="submit">Готово</button>
+    </form>
+{% endblock %}

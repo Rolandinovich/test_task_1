@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block page_content %}
+    <h3>Ваши ответы приняты!</h3>
+    Ожидайте решения на почту
+    <a href="{% url 'main:index' %}">
+        На главную
+    </a>
+{% endblock %}
