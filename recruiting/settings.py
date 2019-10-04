@@ -76,10 +76,21 @@ WSGI_APPLICATION = 'recruiting.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd53h1767ada55',
+        'USER': 'sfosttkejjkkmq',
+        'PASSWORD': 'c81769ab954c1cae9e66e80f5bd29e56444eb8e3e122f3b2371d2d1bf1d3e85e',
+        'HOST': 'ec2-184-73-169-163.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
