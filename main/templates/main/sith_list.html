@@ -7,8 +7,20 @@
 {% block page_content %}
     <h3>Выбирите себя из списка</h3>
     {% for sith in siths %}
-        {{ sith.name }} планета {{ sith.planet}}
+        <a href="{% url 'main:sith_detail' sith.pk %}">
+            {{ sith.name }} с планеты {{ sith.planet }}. <br>
+            Количество Рук Теней {{ sith.recruits.all.count }}
+        </a>
+        <br>***
         <br>
+    {% endfor %}
+    <br>
+    <h3>Ситхи у которых более одной Руки Тени</h3>
+    {% for sith in siths %}
+        {% if sith.recruits.all.count > 1 %}
+            {{ sith.name }} с планеты {{ sith.planet }}.
+            <br>
+        {% endif %}
     {% endfor %}
     <br>
     <a href="{% url 'main:index' %}">

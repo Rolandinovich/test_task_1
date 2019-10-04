@@ -13,9 +13,9 @@ class Planet(models.Model):
 class Recruit(models.Model):
     ''' Рекрут '''
     name = models.CharField('Имя', max_length=100)
-    planet = models.ForeignKey(Planet, on_delete=models.CASCADE,verbose_name='Название планеты')
+    planet = models.ForeignKey(Planet, on_delete=models.CASCADE, verbose_name='Название планеты')
     age = models.PositiveIntegerField('Возраст')
-    email = models.CharField('Email', max_length=100)
+    email = models.EmailField('Email', max_length=100)
 
     def __str__(self):
         return self.name
@@ -29,15 +29,6 @@ class Sith(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class ShadowHand(models.Model):
-    '''Список рекрутов у Ситха'''
-    sith = models.ForeignKey(Sith, on_delete=models.CASCADE)
-    recruit = models.ForeignKey(Recruit, models.CASCADE)
-
-    def __str__(self):
-        return f'У Ситха {self.sith.name} рекрут {self.recruit.name}'
 
 
 class QuestionsList(models.Model):
@@ -58,7 +49,8 @@ class TestTrial(models.Model):
 
 class Answer(models.Model):
     '''Ответы рекрута'''
-    recruit = models.ForeignKey(Recruit, verbose_name='Рекрут', on_delete=models.CASCADE, related_name='answers')
+    recruit = models.ForeignKey(Recruit, verbose_name='Рекрут', on_delete=models.CASCADE,
+                                related_name='recruit_answers')
     question = models.ForeignKey(QuestionsList, 'Вопрос')
     answer = models.BooleanField('Ответ рекрута', null=True, blank=True)
 

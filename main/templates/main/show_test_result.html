@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block page_content %}
+    <h3>{{ title }}</h3>
+    {% for answer in answers %}
+        Вопрос: {{ answer.question.title }}<br>
+        {% if answer.answer %}
+            Ответ: Да
+        {% elif answer.answer == False %}
+            Ответ: Нет
+        {% else %}
+            Ответ: Не определился
+        {% endif %}
+        <br>
+        --------------------------
+        <br>
+    {% endfor %}
+    <a href="{{ next }}"> Назад </a>
+{% endblock %}

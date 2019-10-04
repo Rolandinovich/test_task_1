@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block page_title %}
+    Произошла ошибка
+{% endblock %}
+
+{% block page_content %}
+    <h3>Произошла ошибка</h3>
+    Попробуйте заново.
+    <a href="{% url 'main:index' %}">
+        На главную
+    </a>
+{% endblock %}

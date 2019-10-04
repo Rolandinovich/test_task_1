@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block page_content %}
+    {% if shadow_hadns_count != 0 %}
+        <h3>Ваши Руки Tеней:</h3>
+        {% for shadow_hadn in shadow_hadns %}
+            {{ shadow_hadn.name }} с планеты {{ shadow_hadn.planet.name }}<br>
+            <a href="{% url 'main:del_recruit' pk_sith=sith.pk pk_recruit=shadow_hadn.pk %}">
+                Отказать в сотрудничестве
+            </a>
+            <br>------------------------------<br>
+        {% endfor %}
+    {% else %}
+        <h3>У вас нет Рук Теней. Можете выбрать в списке ниже троих.</h3>
+        ------------------------------<br>
+    {% endif %}
+
+    <h3>**** Список всех свободных рекрутов ****</h3>
+    {% for recruit in recruits %}
+        {{ recruit.name }} с планеты {{ recruit.planet.name }}<br>
+        <a href="{% url 'main:recruit_test_result' pk=recruit.pk %}">
+            Посмотреть результаты теста
+        </a>
+        <br>
+        {% if shadow_hadns_count < 3 %}
+            <a href="{% url 'main:add_recruit' pk_sith=sith.pk pk_recruit=recruit.pk %}">
+                Принять в Руки Теней
+            </a>
+        {% else %}
+            У Вас уже 3 Руки Тени. Откажитесь от одного из рекрутов, что бы принять этого.
+        {% endif %}
+        <br>------------------------------<br>
+
+    {% endfor %}
+    <br>
+    <a href="{% url 'main:index' %}">
+        На главную
+    </a>
+{% endblock %}
