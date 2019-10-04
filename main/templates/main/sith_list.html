@@ -15,7 +15,7 @@
         <br>
     {% endfor %}
     <br>
-    <h3>Ситхи у которых более одной Руки Тени</h3>
+    <h3>Ситхи у которых более одной Руки Теней</h3>
     {% for sith in siths %}
         {% if sith.recruits.all.count > 1 %}
             {{ sith.name }} с планеты {{ sith.planet }}.
