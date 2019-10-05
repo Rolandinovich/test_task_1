@@ -8,9 +8,11 @@ from django.views.generic import UpdateView
 from main.forms import RecruitForm, RecruitTestForm
 from main.models import TestTrial, Answer, Recruit, Sith
 from django.core.mail import send_mail
-
+from django.conf import settings
 
 # Create your views here.
+
+
 
 def start_page(request):
     '''Стартовый страница'''
@@ -90,7 +92,8 @@ def sith_detail(request, pk):
         'shadow_hadns': shadow_hadns,
         'shadow_hadns_count': shadow_hadns_count,
         'recruits': recruits,
-        'title': f'Рекруты ситха "{sith.name}"'
+        'title': f'Рекруты ситха "{sith.name}"',
+        'max_shadow_hands':settings.MAX_SHADOW_HANDS
     }
     return render(request, 'main/sith_detail.html', content)
 
